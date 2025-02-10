@@ -24,7 +24,7 @@ const Quiz = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
-    fetch('https://api-backend-git-main-toriqs-projects-6abf52de.vercel.app/quiz')
+    fetch('https://api-backend-beige.vercel.app/quiz')
       .then(response => response.json())
       .then(data => setData(data));
   }, []);
