@@ -24,7 +24,7 @@ const Quiz = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/quiz')
+    fetch('https://api-backend-git-main-toriqs-projects-6abf52de.vercel.app/quiz')
       .then(response => response.json())
       .then(data => setData(data));
   }, []);
@@ -92,7 +92,7 @@ const Quiz = () => {
       body: formData
     };
 
-    fetch(`http://localhost:5000/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
+    fetch(`https://api-backend-git-main-toriqs-projects-6abf52de.vercel.app/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         if (!isEdit) {
@@ -122,7 +122,7 @@ const Quiz = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/quiz/${id}`, { method: 'DELETE' })
+    fetch(`https://api-backend-git-main-toriqs-projects-6abf52de.vercel.app/quiz/${id}`, { method: 'DELETE' })
       .then(response => response.json())
       .then(data => {
           setData(prevData => prevData.filter(question => question.id !== id));
