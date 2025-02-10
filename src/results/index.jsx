@@ -7,7 +7,7 @@ const ResultAnswer = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch('http://localhost:5000/getResults')
+    fetch('https://api-backend-beige.vercel.app/getResults')
       .then(response => response.json())
       .then(data => setData(data));
   }, []);
