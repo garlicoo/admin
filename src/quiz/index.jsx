@@ -92,7 +92,7 @@ const Quiz = () => {
       body: formData
     };
 
-    fetch(`https://api-backend-git-main-toriqs-projects-6abf52de.vercel.app/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
+    fetch(`http://localhost:5000/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         if (!isEdit) {
@@ -242,19 +242,20 @@ const Quiz = () => {
                 {paginatedData.map((question, index) => (
                 <tr key={question.id} className="table-row">
                 <td className="table-cell">{(currentPage - 1) * totalPerPages + index + 1}</td>
-                    <td className="table-cell">{question.question}</td>
-                    <td className="table-cell">{JSON.stringify(question.options)}</td>
-                    <td className="table-cell">{question.answer}</td>
+                <td className="table-cell">{question.question.length > 100 ? question.question.substring(0, 50) + "..." : question.question}</td>
+                <td className="table-cell">{JSON.stringify(question.options).length > 200 ? JSON.stringify(question.options).substring(0, 50) + "..." : JSON.stringify(question.options)}</td>
+                <td className="table-cell">{question.answer}</td>
                     <td className="table-cell">
-                    <img src={question.image} alt="Question Image" className="h-16 w-16 object-cover"/>
+                    <img src={`https://drive.google.com/thumbnail?id=${question.image}`} alt="Question Image" className="h-32 w-32 object-cover"/>
                     </td>
                     <td className="table-cell">
                     <iframe 
                     width="200" 
                     height="150" 
-                    src={question.video} 
+                    src={`https://drive.google.com/file/d/${question.video}/preview`}
+                    // src="https://drive.google.com/file/d/1oBLHkakkSOVRJnEJIlHGKiDb80wPxl5w/preview"
                     frameBorder="0" 
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
+                    allow="autoplay" 
                     allowFullScreen
                     ></iframe>
                 </td>
@@ -320,4 +321,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-             
