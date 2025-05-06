@@ -92,7 +92,7 @@ const Quiz = () => {
       body: formData
     };
 
-    fetch(`http://localhost:5000/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
+    fetch(`https://api-backend-beige.vercel.app/quiz${isEdit ? `/${editId}` : ''}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         if (!isEdit) {
